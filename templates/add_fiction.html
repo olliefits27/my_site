@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block menubar %}
+{% include 'fictionsMenuBlock.html' %}
+{% endblock menubar %}
+{% block content %}
+<h1 class="add_h1">Add a new fiction</h1>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-control">
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}

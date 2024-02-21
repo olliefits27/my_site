@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>How to use API</h1>
+    <br>
+    <p class="small_margins">This site's API will return data on all Pokemon when the request is made</p>
+    <p class="small_margins">The data is taken from Kaggle, the link for this is below</p>
+    <p class="small_margins">You can get the data for a single Pokemon by going to the link to data for all Pokemon and adding '/[number]' to the end of the URL, with the number being the Pokedex ID of that Pokemon</p>
+    <p class="small_margins">E.G. for Charizard, add '/6' to the end of the URL for all Pokemon</p>
+    <ul>
+        <li>
+            <a href="{%url 'pokemon_api' %}">Click here for the link to data for all Pokemon</a>
+        </li>
+        <li>
+            <a href="https://www.kaggle.com/datasets/rounakbanik/pokemon">Click here to view the dataset</a>
+        </li>
+    </ul>
+</div>
+{% endblock content %}

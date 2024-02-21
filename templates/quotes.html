@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block menubar %}
+{% include 'fictionsMenuBlock.html' %}
+{% endblock menubar %}
+{% block content %}
+<div class="container">
+    <h1>{{ name }}</h1>
+    <br>
+    <ol>
+        {% if not quotes %}
+        <h2 id="no_quotes">No quotes have been added yet for this fiction</h2>
+        {% else %}
+    {% for quote in quotes %}
+        <h2 class="fiction_quote">"{{ quote.quote }}"</h2>
+        <h2 class="fiction_character"> - {{ quote.character }}</h2>
+        <img class="fiction_image" src="{{ quote.image.url }}"/>
+    {% endfor %}
+        {% endif %}
+    </ol>
+    <form action="{% url 'add_quote' fiction%}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="add_quote">
+        <button>Add New Quote</button>
+    </form>
+</div>
+{% endblock content %}

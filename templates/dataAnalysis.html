@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h1>Data Analysis</h1>
+    <br>
+    <p class="small_margins">This data analysis was done using a Kaggle movies dataset called movies_metadata.csv, click <a href="https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset">here</a> to access the dataset</p>
+    <h2 class="data_h2">Fig 1: Number of High Grossing Movies (>10M USD) Per Release Year</h2>
+    <img class="data_image" src="static/images/high_grossing_movies_per_year.png"/>
+    <br>
+    <p class="small_margins">The number of high grossing movies released per year has increased a lot since 1950.
+        There was a steady climb until the mid 1970's then the gradient increased from the mid-1970s to around 2000. Then the gradient
+        increased again, with the Y value doubling and going from just over 60 to 120 in just over a 10 year period.
+    </p>
+    <p class="small_margins">There are a number of factors behind this. Inflation is one - it was much harder to make a movie with a profit
+        of more than 10M USD when the USD was worth a lot more. Another is that more blockbusters are being made. Often these are a part of
+        franchises, with the top 10 highest profit movies all being from big-budget franchises (at the time the dataset goes up to) aside from Avatar,
+        Titanic and Frozen (Avatar and Frozen have subsequently had sequels). The rest of the top 10 includes movies from Star Wars, the MCU,
+        Harry Potter and Jurassic World. Big budget franchises spend lots of money on marketing, spend lots of getting the biggest stars and
+        best special effects, and they are a known product, so lots of people go to see them at the box office. This is important with the
+        advent of streaming, as the majority of a movie's revenue will come from the box office compared to 15 years ago and prior when a mid budget
+        movie could make a lot through DVD sales and through renting services such as Blockbuster.
+    </p>
+    <h2 class="data_h2">Fig 2: Number of High Grossing Movies in Franchise Per Release Year</h2>
+    <img class="data_image" src="static/images/movies_in_collections_per_year.png"/>
+    <p class="small_margins">This is backed up by the data as seen in Fig 2. The number of movies in a franchise (defined in the dataset as
+        more than 1 movie with a similar title and that share the same fictional universe) was below 10 until the mid 1970's, then rose steadily and
+        plateaud until around 2000 when it jumped to 30-40 per year. This jump happens at the same point the gradient for high grossing movies sharply
+        increases suggesting a correlation. This can be seen more evidently if we include only the highest grossing films (over 500M).
+    </p>
+    <h2 class="data_h2">Fig 3: Number of High Grossing Movies (>500M USD) in Franchise Per Release Year</h2>
+    <img class="data_image" src="static/images/movies_in_collections_per_year_500.png"/>
+    <p class="small_margins">The number of high grossing films in franchises is close or matching the number of high grossing films total, until around the
+        year 2015 and the majority of high grossing films are still from franchises. So at the very top of the market, franchises are very dominant.
+    </p>
+    <h2 class="data_h2">Fig 4: Linear Regression on Number of High Grossing Movies (>100M USD) Per Release Year</h2>
+    <img class="data_image" src="static/images/linear_regression_high.png"/>
+    <h2 class="data_h2">Fig 5: Polynomial Regression on Number of High Grossing Movies (>100M USD) Per Release Year</h2>
+    <img class="data_image" src="static/images/polynomial_regression_high.png"/>
+    <p class="small_margins">Linear and polynomial regression models are fitted to the data in Fig 4 and Fig 5. The linear regression has an R-Squared coefficient of 0.92 (to 2 DP) and the
+        polynomial regression has an R-Squared coefficient of 0.97. The polynomial regression has the better fit suggesting that there is an X<sup>2</sup> dependency
+        on release year.
+    </p>
+</div>
+{% endblock content %}

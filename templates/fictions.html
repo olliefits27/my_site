@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block menubar %}
+{% include 'fictionsMenuBlock.html' %}
+{% endblock menubar %}
+{% block content %}
+<div class="container">
+    <h1>Fictions</h1>
+    <p>Add new fictions using the button at the bottom or go into a fiction to view and add quotes</p>
+    <ol>
+    {% for fiction in fictions %}
+        <h2 class="fiction_name">{{ fiction.name }}</h2>
+        <a href="{% url 'quotes' fiction.id %}">Quotes</a>
+        <img class="fiction_image" src="{{ fiction.image.url }}"/>
+    {% endfor %}
+    </ol>
+    <form action="{% url 'add_fiction' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="add_fiction">
+        <button>Add New Fiction</button>
+    </form>
+</div>
+{% endblock content %}
