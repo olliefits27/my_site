@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 
 CATEGORY = (
     ("tv_show", "TV Show"),
@@ -11,7 +10,6 @@ CATEGORY = (
 class Fiction(models.Model):
     name = models.CharField(max_length=400)
     category = models.CharField(max_length=200, choices=CATEGORY)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to="fictionImages")
@@ -24,7 +22,6 @@ class Quote(models.Model):
     quote = models.TextField()
     fiction = models.ForeignKey(Fiction, on_delete=models.CASCADE)
     character = models.CharField(max_length=400)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to="quoteImages")

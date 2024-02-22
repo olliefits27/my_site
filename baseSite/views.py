@@ -28,7 +28,7 @@ class Fictions(generic.ListView):
 
 class AddFiction(generic.CreateView):
     model = Fiction
-    fields = ["name", "category", "image", "author"]
+    fields = ["name", "category", "image"]
     success_url = "/fictions"
     template_name = "add_fiction.html"
 
@@ -51,7 +51,7 @@ class Quotes(generic.ListView):
 
 class AddQuote(generic.CreateView):
     model = Quote
-    fields = ["quote", "character", "author", "image"]
+    fields = ["quote", "character", "image"]
     template_name = "add_quote.html"
     success_url = "/fictions"
 

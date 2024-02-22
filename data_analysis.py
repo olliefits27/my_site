@@ -4,7 +4,6 @@ import re
 import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
-from io import StringIO
 
 df = pd.read_csv("movies_metadata.csv", dtype=str)
 #initial filter on original_language and genres
@@ -63,7 +62,7 @@ plt.plot(release_years, high_grossing_movies_by_year)
 plt.xlabel("Release Year")
 plt.ylabel("Number of Movies Grossing > 100M")
 plt.grid(True)
-fig.savefig('static/images/high_grossing_movies_per_year_high.png', dpi=fig.dpi)
+fig.savefig('static/images/high_grossing_movies_per_year_100m.png', dpi=fig.dpi)
 plt.show()
 
 genre_list = []
@@ -100,7 +99,7 @@ plt.xlabel("Release Year")
 plt.ylabel("Number of Movies Grossing > 500M")
 plt.grid(True)
 plt.legend()
-fig.savefig('static/images/movies_in_collections_per_year_500.png', dpi=fig.dpi)
+fig.savefig('static/images/movies_in_collections_per_year_100m.png', dpi=fig.dpi)
 plt.show()
 
 x = np.array(release_years).reshape((-1,1))
@@ -121,7 +120,7 @@ plt.plot(release_years, y_values)
 plt.xlabel("Release Year")
 plt.ylabel("Number of Movies Grossing > 100M")
 plt.grid(True)
-fig.savefig('static/images/linear_regression_high.png', dpi=fig.dpi)
+fig.savefig('static/images/linear_regression_100m.png', dpi=fig.dpi)
 plt.show()
 
 #polynomial regression
@@ -141,5 +140,5 @@ plt.plot(release_years, high_grossing_movies_by_year)
 plt.xlabel("Release Year")
 plt.ylabel("Number of Movies Grossing > 100M")
 plt.grid(True)
-fig.savefig('static/images/polynomial_regression_high.png', dpi=fig.dpi)
+fig.savefig('static/images/polynomial_regression_100m.png', dpi=fig.dpi)
 plt.show()
