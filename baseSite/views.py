@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import permissions
 from .serializers import PokemonSerializer
+import pandas as pd
 
 
 class Index(generic.TemplateView):
@@ -17,6 +18,15 @@ class APIGuide(generic.TemplateView):
 
 class DataAnalysis(generic.TemplateView):
     template_name = "dataAnalysis.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        df = pd.read_csv("high_grossing_movies.csv", index_col=False)
+        context["headers"] = [col for col in df.columns]
+        values = df.values.tolist()
+        context["output"] = values
+        return context
+
 
 
 class Fictions(generic.ListView):
